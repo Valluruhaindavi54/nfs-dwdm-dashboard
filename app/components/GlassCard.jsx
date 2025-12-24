@@ -1,19 +1,24 @@
-"use client";
-
-export default function GlassCard({ children, style }: any) {
+ // components/GlassCard.tsx
+export default function GlassCard({
+  children,
+  fullWidth = false,
+}: {
+  children: React.ReactNode;
+  fullWidth?: boolean;
+}) {
   return (
-    <div className="glass-card" style={style}>
-      <style jsx>{`
-        .glass-card:hover {
-          background: linear-gradient(
-            135deg,
-            rgba(56, 189, 248, 0.12) 0%,
-            rgba(30, 41, 59, 0.8) 100%
-          ) !important;
-          border-color: rgba(125, 211, 252, 0.3) !important;
-          transform: translateY(-2px);
-        }
-      `}</style>
+    <div
+      style={{
+        background: "rgba(30, 41, 59, 0.45)",
+        border: "1px solid rgba(255,255,255,0.08)",
+        borderRadius: "14px",
+        padding: "12px",
+        height: "260px",              // ✅ SAME HEIGHT FOR ALL CARDS
+        display: "flex",
+        flexDirection: "column",
+        gridColumn: fullWidth ? "1 / -1" : undefined,
+      }}
+    >
       {children}
     </div>
   );
